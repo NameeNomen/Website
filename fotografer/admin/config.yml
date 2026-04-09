@@ -1,0 +1,22 @@
+backend:
+  name: git-gateway
+  branch: main # Ganti jadi master kalo repo lu namanya master
+
+media_folder: "images/uploads"
+public_folder: "images/uploads"
+
+collections:
+  - name: "portfolio_data"
+    label: "Data Portofolio"
+    files:
+      - label: "Karya Fotografer"
+        name: "karya"
+        file: "data/portfolio.json"
+        fields:
+          - label: "Daftar Karya"
+            name: "items"
+            widget: "list"
+            fields:
+              - {label: "Judul Foto", name: "title", widget: "string"}
+              - {label: "Kategori (Misal: Prewedding, Editorial)", name: "category", widget: "string"}
+              - {label: "Upload Foto Di Sini", name: "image", widget: "image"}
