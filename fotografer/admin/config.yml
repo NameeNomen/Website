@@ -2,7 +2,7 @@ backend:
   name: git-gateway
   branch: main # Ganti jadi master kalo repo lu namanya master
 
-media_folder: "images/uploads"
+media_folder: "fotografer/images/uploads"
 public_folder: "images/uploads"
 
 collections:
@@ -11,7 +11,7 @@ collections:
     files:
       - label: "Karya Fotografer"
         name: "karya"
-        file: "data/portfolio.json"
+        file: "fotografer/data/portfolio.json"
         fields:
           - label: "Daftar Karya"
             name: "items"
