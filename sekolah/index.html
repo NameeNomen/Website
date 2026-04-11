@@ -1,271 +1,736 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard Sekolah Digital | Official</title>
+  <title>Sekolah Digital | Profil & Branding</title>
   
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
-    /* VARIABLES: Kunci Minimalis & Formal */
+    /* VARIABLES: Clean, Terarah, Profesional */
     :root {
-      --bg: #f8fafc;
-      --text: #1e293b;
-      --card: #ffffff;
-      --accent: #1d4ed8; /* Biru Formal */
-      --sidebar: #ffffff;
-      --border: #e2e8f0;
-      --muted: #64748b;
-      --transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      --bg: #ffffff;
+      --text: #111827;
+      --text-muted: #6b7280;
+      --border: #e5e7eb;
+      --accent: #111827; 
+      --surface: #ffffff;
+      --surface-alt: #f9fafb;
+      --radius: 12px;
+      --transition: all 0.3s ease;
     }
 
-    /* DARK MODE VARIABLES */
     body.dark-mode {
-      --bg: #0f172a;
-      --text: #f1f5f9;
-      --card: #1e293b;
-      --accent: #3b82f6;
-      --sidebar: #1e293b;
-      --border: #334155;
-      --muted: #94a3b8;
+      --bg: #030712;
+      --text: #f9fafb;
+      --text-muted: #9ca3af;
+      --border: #1f2937;
+      --accent: #f9fafb;
+      --surface: #030712;
+      --surface-alt: #111827;
     }
 
-    /* BASE STYLES */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      transition: var(--transition); /* Animasi Smooth di semua elemen */
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
       font-family: 'Inter', sans-serif;
       background-color: var(--bg);
       color: var(--text);
-      display: flex;
-      min-height: 100vh;
-      overflow-x: hidden;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      transition: background-color 0.3s, color 0.3s;
+      overflow-x: hidden; /* Biar gak goyang pas ada elemen off-screen */
     }
 
-    /* SIDEBAR: Elegan & Minimalis */
-    aside {
-      width: 280px;
-      background-color: var(--sidebar);
-      border-right: 1px solid var(--border);
-      padding: 2rem;
-      display: flex;
-      flex-direction: column;
-      position: fixed;
-      height: 100vh;
-      z-index: 10;
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+
+    .container {
+      max-width: 1200px; 
+      margin: 0 auto;
+      padding: 0 1.5rem;
     }
 
-    .logo-area {
-      font-weight: 700;
-      font-size: 1.2rem;
-      color: var(--accent);
-      margin-bottom: 3rem;
-      letter-spacing: -0.025em;
+    /* SKELETON LOADING */
+    .skeleton {
+      background: linear-gradient(90deg, var(--surface-alt) 25%, var(--border) 50%, var(--surface-alt) 75%);
+      background-size: 200% 100%;
+      animation: pulse 1.5s ease-in-out infinite;
+      border-radius: 4px;
+      color: transparent !important;
+    }
+    .skeleton-img {
+      background-color: var(--surface-alt);
+      border-radius: var(--radius);
+    }
+    @keyframes pulse {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
     }
 
-    nav ul {
-      list-style: none;
+    /* ANIMASI MUNCUL & HOVER */
+    .fade-in {
+      animation: fadeIn 0.8s ease-out forwards;
     }
-
-    nav li {
-      padding: 12px 16px;
-      border-radius: 8px;
-      margin-bottom: 8px;
-      cursor: pointer;
-      font-weight: 500;
-      color: var(--muted);
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    nav li:hover, nav li.active {
-      background-color: var(--bg);
-      color: var(--accent);
-    }
-
-    /* MAIN CONTENT */
-    main {
-      flex: 1;
-      margin-left: 280px;
-      padding: 3rem;
-      max-width: calc(100% - 280px);
-    }
-
-    .header-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 4rem;
-    }
-
-    .welcome-text h1 {
-      font-size: 2rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-    }
-
-    .welcome-text p {
-      color: var(--muted);
-    }
-
-    /* CARDS: Modern & Elegan */
-    .grid-info {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 1.5rem;
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .card {
-      background-color: var(--card);
+      background-color: var(--surface);
       border: 1px solid var(--border);
-      padding: 2rem;
-      border-radius: 16px;
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      border-radius: var(--radius);
+      padding: 2.5rem; 
+      transition: var(--transition);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05); 
     }
-
-    .card h3 {
-      font-size: 1.1rem;
-      margin-bottom: 1rem;
-      color: var(--accent);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    .card p {
-      line-height: 1.7;
-      color: var(--text);
-      opacity: 0.9;
-    }
-
-    /* BUTTON: Luxury Feel */
-    .btn-mode {
-      background-color: var(--accent);
-      color: white;
-      border: none;
-      padding: 12px 24px;
-      border-radius: 99px;
-      font-weight: 600;
-      cursor: pointer;
-      box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3);
-    }
-
-    .btn-mode:hover {
+    
+    .card:hover {
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
       transform: translateY(-2px);
-      box-shadow: 0 20px 25px -5px rgba(37, 99, 235, 0.4);
     }
 
-    /* RESPONSIVE */
-    @media (max-width: 1024px) {
-      aside { width: 80px; padding: 2rem 1rem; align-items: center; }
-      nav span, .logo-area span { display: none; }
-      main { margin-left: 80px; max-width: calc(100% - 80px); }
+    /* NAVBAR */
+    header.navbar {
+      position: sticky;
+      top: 0;
+      width: 100%;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      z-index: 100;
+      transition: var(--transition);
     }
 
+    .nav-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 70px;
+    }
+
+    .logo {
+      font-size: 1.25rem;
+      font-weight: 800;
+      letter-spacing: -0.05em;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    .btn-icon {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      padding: 0.5rem;
+      display: flex;
+      align-items: center;
+      border-radius: 8px;
+    }
+    .btn-icon:hover { color: var(--text); background-color: var(--surface-alt); }
+
+    /* HAMBURGER MENU */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: space-around;
+      width: 24px;
+      height: 24px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      z-index: 110;
+    }
+
+    .hamburger span {
+      width: 24px;
+      height: 2px;
+      background-color: var(--text);
+      border-radius: 10px;
+      transition: var(--transition);
+      transform-origin: 1px;
+    }
+
+    /* HERO SECTION */
+    .hero {
+      padding: 120px 0 100px;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+      background-color: var(--surface-alt);
+      background-image: linear-gradient(rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1200&q=80');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
+
+    body.dark-mode .hero {
+      background-image: linear-gradient(rgba(3, 7, 18, 0.95), rgba(3, 7, 18, 0.95)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1200&q=80');
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.04em;
+      margin-bottom: 1rem;
+      color: var(--text);
+    }
+
+    .hero p {
+      font-size: 1.125rem;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* SECTION LAYOUTS */
+    .section-padding { padding: 5rem 0; }
+    .section-title {
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin-bottom: 2.5rem;
+      letter-spacing: -0.02em;
+    }
+
+    /* PROFIL & KEPSEK GRID */
+    .grid-profil {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .kepsek-foto {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      border-radius: var(--radius);
+      margin-bottom: 1rem;
+      border: 1px solid var(--border);
+    }
+
+    .kepsek-info h3 { font-size: 1.25rem; margin-bottom: 0.25rem; }
+    .kepsek-info p { color: var(--text-muted); font-size: 0.875rem; }
+
+    .sambutan-text {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: var(--text);
+    }
+
+    /* VISI MISI GRID */
+    .grid-visimisi {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .misi-list {
+      list-style-type: decimal;
+      padding-left: 1.5rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+    .misi-list li { margin-bottom: 0.5rem; }
+
+    /* DUMMY GRID (BUAT GURU & BERITA) */
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+    .dummy-card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: var(--surface);
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+    }
+    .dummy-card:hover {
+      box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+      transform: translateY(-5px);
+    }
+    .dummy-img {
+      width: 100%;
+      height: 250px;
+      background-color: var(--surface-alt);
+      object-fit: cover;
+    }
+    .dummy-img.berita-img {
+      height: 200px;
+    }
+    .dummy-body { padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column; }
+    
+    .badge {
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.25rem 0.5rem;
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      display: inline-block;
+      margin-bottom: 0.75rem;
+      align-self: flex-start;
+    }
+
+    /* FOOTER (MERGE DENGAN KONTAK) */
+    footer {
+      background-color: var(--surface-alt);
+      border-top: 1px solid var(--border);
+      padding: 4rem 0 2rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .footer-col h4 {
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+      color: var(--text);
+    }
+
+    .footer-col p, .footer-col a {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .footer-col a:hover { color: var(--text); }
+
+    .footer-bottom {
+      border-top: 1px solid var(--border);
+      padding-top: 2rem;
+      text-align: center;
+      font-size: 0.875rem;
+      color: var(--text-muted);
+    }
+
+    /* RESPONSIVE & MOBILE MENU */
     @media (max-width: 768px) {
-      body { flex-direction: column; }
-      aside { width: 100%; height: auto; position: relative; border-right: none; border-bottom: 1px solid var(--border); }
-      main { margin-left: 0; max-width: 100%; padding: 1.5rem; }
-      .header-top { flex-direction: column; gap: 2rem; align-items: flex-start; }
+      .hamburger { display: flex; }
+      
+      .nav-links {
+        position: absolute;
+        top: 70px;
+        left: -100%;
+        width: 100%;
+        background-color: var(--bg);
+        flex-direction: column;
+        gap: 0;
+        border-bottom: 1px solid var(--border);
+        transition: left 0.3s ease-in-out;
+      }
+
+      .nav-links.active {
+        left: 0;
+      }
+
+      .nav-links a {
+        padding: 1.25rem 1.5rem;
+        width: 100%;
+        border-bottom: 1px solid var(--surface-alt);
+        display: block;
+      }
+
+      .nav-links a:last-child {
+        border-bottom: none;
+      }
+
+      /* Animasi Hamburger ke 'X' */
+      .hamburger.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+      }
+      .hamburger.active span:nth-child(2) {
+        opacity: 0;
+      }
+      .hamburger.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -6px);
+      }
+
+      .grid-profil { grid-template-columns: 1fr; gap: 2rem; }
+      .grid-visimisi { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .hero { padding: 100px 0 60px; } 
+      .card { padding: 1.5rem; } 
     }
   </style>
 </head>
 <body>
 
-  <aside>
-    <div class="logo-area">
-      🎓 <span>SDN DIGITAL</span>
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="container nav-content">
+      <div class="logo">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"></path>
+        </svg>
+        <span id="nav-brand" class="skeleton">Memuat...</span>
+      </div>
+      
+      <div class="nav-actions">
+        <!-- Toggles & Menu Kumpul Disini -->
+        <button class="btn-icon" id="mode-toggle" aria-label="Ganti Tema">
+          <svg id="moon-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+          <svg id="sun-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+        </button>
+
+        <nav class="nav-links" id="nav-menu">
+          <a href="#" class="nav-item">Beranda</a>
+          <a href="#profil" class="nav-item">Profil</a>
+          <a href="#guru" class="nav-item">Pendidik</a>
+          <a href="#berita" class="nav-item">Berita</a>
+          <a href="#footer-kontak" class="nav-item">Kontak</a>
+        </nav>
+
+        <button class="hamburger" id="hamburger-menu" aria-label="Menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
     </div>
-    <nav>
-      <ul>
-        <li class="active">🏠 <span>Beranda</span></li>
-        <li>📰 <span>Berita Sekolah</span></li>
-        <li>👨‍🏫 <span>Data Guru</span></li>
-        <li>📞 <span>Kontak</span></li>
-      </ul>
-    </nav>
-  </aside>
+  </header>
 
-  <main>
-    <div class="header-top">
-      <div class="welcome-text">
-        <h1 id="nama-sekolah">Memuat Data...</h1>
-        <p>Sistem Informasi & Branding Digital Sekolah</p>
-      </div>
-      <button class="btn-mode" id="mode-toggle">Ganti Mode</button>
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="container">
+      <h1 id="nama-sekolah" class="skeleton" style="display:inline-block;">Memuat Nama Sekolah...</h1>
+      <p>Membentuk karakter, membangun prestasi, dan mencetak generasi penerus bangsa yang siap menghadapi tantangan masa depan.</p>
     </div>
+  </section>
 
-    <div class="grid-info">
-      <div class="card" style="grid-column: span 2;">
-        <h3>Sambutan Kepala Sekolah</h3>
-        <p id="sambutan">Mengambil sambutan terbaru dari database...</p>
+  <!-- 1. PROFIL SEKOLAH -->
+  <section id="profil" class="section-padding fade-in">
+    <div class="container">
+      <h2 class="section-title">Profil Sekolah</h2>
+      
+      <div class="grid-profil">
+        <!-- Area Foto & Nama Kepsek -->
+        <div class="card" style="text-align: center;">
+          <img id="foto-kepsek" src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=400&q=80" alt="Foto Kepala Sekolah" class="kepsek-foto">
+          <div class="kepsek-info">
+            <h3 id="nama-kepsek">Bapak Budi Mulyono, M.Pd</h3>
+            <p>Kepala Sekolah</p>
+          </div>
+        </div>
+
+        <!-- Area Sambutan -->
+        <div class="card">
+          <h3 style="margin-bottom: 1rem; color: var(--text-muted); font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.05em;">Sambutan Kepala Sekolah</h3>
+          <div id="sambutan" class="sambutan-text">
+            "Pendidikan adalah senjata paling ampuh yang bisa Anda gunakan untuk mengubah dunia. Di sekolah ini, kami tidak hanya mengajarkan teori, tetapi juga karakter dan etika agar siswa siap menghadapi masa depan digital yang penuh tantangan. Selamat bergabung dengan keluarga besar kami."
+          </div>
+        </div>
       </div>
 
-      <div class="card">
-        <h3>Visi Sekolah</h3>
-        <p id="visi-text">Memuat visi...</p>
-      </div>
-
-      <div class="card">
-        <h3>Lokasi Kami</h3>
-        <p id="alamat-text">Memuat alamat...</p>
+      <!-- Visi & Misi -->
+      <div class="grid-visimisi">
+        <div class="card">
+          <h3 style="margin-bottom: 1rem;">Visi</h3>
+          <p id="visi-text" style="color: var(--text-muted); line-height: 1.7;">Menjadi sekolah rujukan nasional yang unggul dalam ilmu pengetahuan, teknologi, dan akhlak mulia.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-bottom: 1rem;">Misi</h3>
+          <ul id="misi-list" class="misi-list">
+            <li>Menyelenggarakan pembelajaran berbasis teknologi terkini.</li>
+            <li>Membangun karakter siswa yang berintegritas dan peduli lingkungan.</li>
+            <li>Meningkatkan kompetensi guru secara berkelanjutan.</li>
+          </ul>
+        </div>
       </div>
     </div>
-  </main>
+  </section>
+
+  <!-- 2. GURU / TENAGA PENDIDIK -->
+  <section id="guru" class="section-padding fade-in" style="background-color: var(--surface-alt);">
+    <div class="container">
+      <h2 class="section-title">Tenaga Pendidik</h2>
+      <p style="color: var(--text-muted); margin-bottom: 2rem;">Guru-guru profesional yang berdedikasi tinggi membimbing siswa.</p>
+      
+      <div class="grid-3">
+        <div class="dummy-card">
+          <img class="dummy-img" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80" alt="Guru">
+          <div class="dummy-body">
+            <h3 style="margin-bottom: 0.25rem;">Ibu Siti Aminah, M.Pd</h3>
+            <p style="color: var(--text-muted); font-size: 0.875rem;">Guru Bahasa Inggris</p>
+          </div>
+        </div>
+        <div class="dummy-card">
+          <img class="dummy-img" src="https://images.unsplash.com/photo-1544717302-de2939b7ef71?auto=format&fit=crop&w=400&q=80" alt="Guru">
+          <div class="dummy-body">
+            <h3 style="margin-bottom: 0.25rem;">Ahmad Dahlan, S.Kom</h3>
+            <p style="color: var(--text-muted); font-size: 0.875rem;">Guru TIK / Komputer</p>
+          </div>
+        </div>
+        <div class="dummy-card">
+          <img class="dummy-img" src="https://images.unsplash.com/photo-1580894732444-8ecded7900cd?auto=format&fit=crop&w=400&q=80" alt="Guru">
+          <div class="dummy-body">
+            <h3 style="margin-bottom: 0.25rem;">Budi Santoso, S.Pd</h3>
+            <p style="color: var(--text-muted); font-size: 0.875rem;">Guru Matematika</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. BERITA SEKOLAH & PRESTASI -->
+  <section id="berita" class="section-padding fade-in">
+    <div class="container">
+      <h2 class="section-title">Berita & Prestasi</h2>
+      <p style="color: var(--text-muted); margin-bottom: 2rem;">Kabar terbaru, kegiatan, dan pencapaian kebanggaan sekolah.</p>
+
+      <div class="grid-3">
+        <!-- Berita 1 -->
+        <div class="dummy-card">
+          <img class="dummy-img berita-img" src="https://images.unsplash.com/photo-1561525140-c2a4cc68e4bd?auto=format&fit=crop&w=600&q=80" alt="Berita">
+          <div class="dummy-body">
+            <span class="badge">Prestasi</span>
+            <h3 style="margin-bottom: 0.5rem; line-height: 1.4;">Juara 1 Olimpiade Sains Nasional Tingkat Provinsi</h3>
+            <p style="color: var(--text-muted); font-size: 0.875rem; margin-bottom: 1rem;">Siswa kami berhasil meraih medali emas pada ajang OSN berkat persiapan matang dan bimbingan guru.</p>
+            <p style="color: var(--text-muted); font-size: 0.75rem; margin-top: auto;">12 Oktober 2024</p>
+          </div>
+        </div>
+
+        <!-- Berita 2 -->
+        <div class="dummy-card">
+          <img class="dummy-img berita-img" src="https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=600&q=80" alt="Berita">
+          <div class="dummy-body">
+            <span class="badge">Kegiatan</span>
+            <h3 style="margin-bottom: 0.5rem; line-height: 1.4;">Kunjungan Edukasi ke Museum Nasional</h3>
+            <p style="color: var(--text-muted); font-size: 0.875rem; margin-bottom: 1rem;">Siswa kelas 6 mengikuti kegiatan field trip untuk mempelajari sejarah kebudayaan Indonesia.</p>
+            <p style="color: var(--text-muted); font-size: 0.75rem; margin-top: auto;">5 Oktober 2024</p>
+          </div>
+        </div>
+
+        <!-- Berita 3 -->
+        <div class="dummy-card">
+          <img class="dummy-img berita-img" src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=600&q=80" alt="Berita">
+          <div class="dummy-body">
+            <span class="badge">Pengumuman</span>
+            <h3 style="margin-bottom: 0.5rem; line-height: 1.4;">Penerimaan Peserta Didik Baru (PPDB) Telah Dibuka</h3>
+            <p style="color: var(--text-muted); font-size: 0.875rem; margin-bottom: 1rem;">Segera daftarkan putra/putri Anda. Kuota terbatas untuk tahun ajaran baru mendatang.</p>
+            <p style="color: var(--text-muted); font-size: 0.75rem; margin-top: auto;">1 Oktober 2024</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. FOOTER (BERISI KONTAK) -->
+  <footer id="footer-kontak">
+    <div class="container">
+      <div class="footer-grid">
+        
+        <!-- Info Brand -->
+        <div class="footer-col">
+          <h4 id="footer-brand" class="skeleton" style="display:inline-block;">Memuat...</h4>
+          <p style="line-height: 1.7;">Sekolah ramah anak dengan fasilitas teknologi terdepan untuk mencetak generasi cerdas beradab.</p>
+        </div>
+
+        <!-- Info Kontak dari JSON -->
+        <div class="footer-col">
+          <h4>Hubungi Kami</h4>
+          <p>
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle>
+            </svg>
+            <span id="alamat-text">Jl. Pendidikan No. 123, Jakarta</span>
+          </p>
+          <p>
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+            </svg>
+            <span id="telepon-text">(021) 555-0198</span>
+          </p>
+          <p>
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+            <span id="email-text">info@sekolahdigital.sch.id</span>
+          </p>
+        </div>
+
+        <!-- Tautan Cepat -->
+        <div class="footer-col">
+          <h4>Tautan Cepat</h4>
+          <a href="#profil">Profil Sekolah</a>
+          <a href="#guru">Tenaga Pendidik</a>
+          <a href="#berita">Berita & Prestasi</a>
+          <a href="#">Portal Siswa</a>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; <span id="year">2024</span> <span id="footer-school">Institusi Digital</span>. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
 
   <script>
-    const modeBtn = document.getElementById('mode-toggle');
-    const body = document.body;
+    document.getElementById('year').textContent = new Date().getFullYear();
 
-    // 1. LOGIKA DARK MODE (SMOOTH)
-    modeBtn.addEventListener('click', () => {
-      body.classList.toggle('dark-mode');
-      const isDark = body.classList.contains('dark-mode');
-      localStorage.setItem('school-theme', isDark ? 'dark' : 'light');
-      updateBtnText(isDark);
+    // 1. HAMBURGER MENU LOGIC (Buat HP lu yang kecil itu)
+    const hamburger = document.getElementById('hamburger-menu');
+    const navMenu = document.getElementById('nav-menu');
+    const navItems = document.querySelectorAll('.nav-item');
+
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      navMenu.classList.toggle('active');
     });
 
-    function updateBtnText(isDark) {
-      modeBtn.innerText = isDark ? '🌙 Mode Gelap' : '☀️ Mode Terang';
+    // Pas di-klik linknya, tutup menunya (biar pinter dikit UX-nya)
+    navItems.forEach(item => {
+      item.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+      });
+    });
+
+    // 2. DARK MODE LOGIC
+    const modeBtn = document.getElementById('mode-toggle');
+    const body = document.body;
+    const moonIcon = document.getElementById('moon-icon');
+    const sunIcon = document.getElementById('sun-icon');
+
+    function updateThemeUI(isDark) {
+      if (isDark) {
+        body.classList.add('dark-mode');
+        moonIcon.style.display = 'none';
+        sunIcon.style.display = 'block';
+      } else {
+        body.classList.remove('dark-mode');
+        moonIcon.style.display = 'block';
+        sunIcon.style.display = 'none';
+      }
     }
 
-    // Cek LocalStorage
-    if (localStorage.getItem('school-theme') === 'dark') {
-      body.classList.add('dark-mode');
-      updateBtnText(true);
+    modeBtn.addEventListener('click', () => {
+      const isDark = !body.classList.contains('dark-mode');
+      localStorage.setItem('school-theme', isDark ? 'dark' : 'light');
+      updateThemeUI(isDark);
+    });
+
+    const savedTheme = localStorage.getItem('school-theme');
+    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+      updateThemeUI(true);
     } else {
-      updateBtnText(false);
+      updateThemeUI(false);
     }
 
-    // 2. FETCH DATA DARI CMS (about.json & kontak.json)
-    // Kita panggil dua-duanya biar pinter
-    
-    // Ambil Data Profil
+    // HELPER UNTUK SKELETON
+    function removeSkeleton(elementId, text) {
+      const el = document.getElementById(elementId);
+      if (el) {
+        el.classList.remove('skeleton');
+        el.innerHTML = text;
+      }
+    }
+
+    // --- 3. FETCH DATA TENTANG SEKOLAH (about.json) ---
     fetch('/sekolah/data/about.json')
-      .then(res => res.json())
+      .then(res => {
+        if (!res.ok) throw new Error('about.json tidak ditemukan');
+        return res.json();
+      })
       .then(data => {
-        document.getElementById('nama-sekolah').innerText = data.school_name || "SD Negeri Digital";
-        document.getElementById('sambutan').innerText = data.greeting || "Selamat datang di website kami.";
-        document.getElementById('visi-text').innerText = data.visi || "-";
+        const schoolName = data.school_name || "SD Negeri Digital";
+        removeSkeleton('nama-sekolah', schoolName);
+        
+        document.getElementById('nav-brand').innerText = schoolName.split(' ')[0] || "Sekolah";
+        document.getElementById('nav-brand').classList.remove('skeleton');
+        
+        removeSkeleton('footer-brand', schoolName);
+        document.getElementById('footer-school').innerText = schoolName;
+
+        if(data.Kepsek) document.getElementById('nama-kepsek').innerText = data.Kepsek;
+        
+        const imgEl = document.getElementById('foto-kepsek');
+        if (data.foto_Kepsek) imgEl.src = data.foto_Kepsek; 
+
+        if(data.greeting) document.getElementById('sambutan').innerText = data.greeting;
+        if(data.visi) document.getElementById('visi-text').innerText = data.visi;
+
+        const misiListEl = document.getElementById('misi-list');
+        if (data.misi && Array.isArray(data.misi)) {
+          misiListEl.innerHTML = ''; 
+          data.misi.forEach(m => {
+            const li = document.createElement('li');
+            li.innerText = m.item || m; 
+            misiListEl.appendChild(li);
+          });
+        }
       })
       .catch(err => {
-        console.warn("Data about.json belum ada. Isi lewat CMS!");
-        document.getElementById('nama-sekolah').innerText = "Belum Ada Data";
+        console.log("Mode Dummy jalan karena CMS lokal nggak nembus.");
+        removeSkeleton('nama-sekolah', "SD Negeri Digital");
+        removeSkeleton('footer-brand', "SD Negeri Digital");
+        document.getElementById('nav-brand').innerText = "SDN";
+        document.getElementById('nav-brand').classList.remove('skeleton');
       });
 
-    // Ambil Data Kontak
+    // --- 4. FETCH DATA KONTAK (kontak.json) ---
     fetch('/sekolah/data/kontak.json')
-      .then(res => res.json())
-      .then(data => {
-        document.getElementById('alamat-text').innerText = data.address || "Alamat belum diatur.";
+      .then(res => {
+        if (!res.ok) throw new Error('kontak.json tidak ditemukan');
+        return res.json();
       })
-      .catch(err => console.warn("Data kontak.json belum ada."));
+      .then(data => {
+        if(data.address) document.getElementById('alamat-text').innerText = data.address;
+        if(data.phone) document.getElementById('telepon-text').innerText = data.phone;
+        if(data.email) document.getElementById('email-text').innerText = data.email;
+      })
+      .catch(err => {
+         console.log("Kontak gagal di-fetch, tetep pake dummy.");
+      });
 
   </script>
 </body>
