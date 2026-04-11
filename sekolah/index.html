@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Sekolah Digital | Official</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* VARIABLES: Kunci Minimalis & Formal */
+    :root {
+      --bg: #f8fafc;
+      --text: #1e293b;
+      --card: #ffffff;
+      --accent: #1d4ed8; /* Biru Formal */
+      --sidebar: #ffffff;
+      --border: #e2e8f0;
+      --muted: #64748b;
+      --transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* DARK MODE VARIABLES */
+    body.dark-mode {
+      --bg: #0f172a;
+      --text: #f1f5f9;
+      --card: #1e293b;
+      --accent: #3b82f6;
+      --sidebar: #1e293b;
+      --border: #334155;
+      --muted: #94a3b8;
+    }
+
+    /* BASE STYLES */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      transition: var(--transition); /* Animasi Smooth di semua elemen */
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      display: flex;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* SIDEBAR: Elegan & Minimalis */
+    aside {
+      width: 280px;
+      background-color: var(--sidebar);
+      border-right: 1px solid var(--border);
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      height: 100vh;
+      z-index: 10;
+    }
+
+    .logo-area {
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: var(--accent);
+      margin-bottom: 3rem;
+      letter-spacing: -0.025em;
+    }
+
+    nav ul {
+      list-style: none;
+    }
+
+    nav li {
+      padding: 12px 16px;
+      border-radius: 8px;
+      margin-bottom: 8px;
+      cursor: pointer;
+      font-weight: 500;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    nav li:hover, nav li.active {
+      background-color: var(--bg);
+      color: var(--accent);
+    }
+
+    /* MAIN CONTENT */
+    main {
+      flex: 1;
+      margin-left: 280px;
+      padding: 3rem;
+      max-width: calc(100% - 280px);
+    }
+
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 4rem;
+    }
+
+    .welcome-text h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .welcome-text p {
+      color: var(--muted);
+    }
+
+    /* CARDS: Modern & Elegan */
+    .grid-info {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background-color: var(--card);
+      border: 1px solid var(--border);
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    }
+
+    .card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .card p {
+      line-height: 1.7;
+      color: var(--text);
+      opacity: 0.9;
+    }
+
+    /* BUTTON: Luxury Feel */
+    .btn-mode {
+      background-color: var(--accent);
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 99px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3);
+    }
+
+    .btn-mode:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 20px 25px -5px rgba(37, 99, 235, 0.4);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      aside { width: 80px; padding: 2rem 1rem; align-items: center; }
+      nav span, .logo-area span { display: none; }
+      main { margin-left: 80px; max-width: calc(100% - 80px); }
+    }
+
+    @media (max-width: 768px) {
+      body { flex-direction: column; }
+      aside { width: 100%; height: auto; position: relative; border-right: none; border-bottom: 1px solid var(--border); }
+      main { margin-left: 0; max-width: 100%; padding: 1.5rem; }
+      .header-top { flex-direction: column; gap: 2rem; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <aside>
+    <div class="logo-area">
+      🎓 <span>SDN DIGITAL</span>
+    </div>
+    <nav>
+      <ul>
+        <li class="active">🏠 <span>Beranda</span></li>
+        <li>📰 <span>Berita Sekolah</span></li>
+        <li>👨‍🏫 <span>Data Guru</span></li>
+        <li>📞 <span>Kontak</span></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <main>
+    <div class="header-top">
+      <div class="welcome-text">
+        <h1 id="nama-sekolah">Memuat Data...</h1>
+        <p>Sistem Informasi & Branding Digital Sekolah</p>
+      </div>
+      <button class="btn-mode" id="mode-toggle">Ganti Mode</button>
+    </div>
+
+    <div class="grid-info">
+      <div class="card" style="grid-column: span 2;">
+        <h3>Sambutan Kepala Sekolah</h3>
+        <p id="sambutan">Mengambil sambutan terbaru dari database...</p>
+      </div>
+
+      <div class="card">
+        <h3>Visi Sekolah</h3>
+        <p id="visi-text">Memuat visi...</p>
+      </div>
+
+      <div class="card">
+        <h3>Lokasi Kami</h3>
+        <p id="alamat-text">Memuat alamat...</p>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const modeBtn = document.getElementById('mode-toggle');
+    const body = document.body;
+
+    // 1. LOGIKA DARK MODE (SMOOTH)
+    modeBtn.addEventListener('click', () => {
+      body.classList.toggle('dark-mode');
+      const isDark = body.classList.contains('dark-mode');
+      localStorage.setItem('school-theme', isDark ? 'dark' : 'light');
+      updateBtnText(isDark);
+    });
+
+    function updateBtnText(isDark) {
+      modeBtn.innerText = isDark ? '🌙 Mode Gelap' : '☀️ Mode Terang';
+    }
+
+    // Cek LocalStorage
+    if (localStorage.getItem('school-theme') === 'dark') {
+      body.classList.add('dark-mode');
+      updateBtnText(true);
+    } else {
+      updateBtnText(false);
+    }
+
+    // 2. FETCH DATA DARI CMS (about.json & kontak.json)
+    // Kita panggil dua-duanya biar pinter
+    
+    // Ambil Data Profil
+    fetch('/sekolah/data/about.json')
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById('nama-sekolah').innerText = data.school_name || "SD Negeri Digital";
+        document.getElementById('sambutan').innerText = data.greeting || "Selamat datang di website kami.";
+        document.getElementById('visi-text').innerText = data.visi || "-";
+      })
+      .catch(err => {
+        console.warn("Data about.json belum ada. Isi lewat CMS!");
+        document.getElementById('nama-sekolah').innerText = "Belum Ada Data";
+      });
+
+    // Ambil Data Kontak
+    fetch('/sekolah/data/kontak.json')
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById('alamat-text').innerText = data.address || "Alamat belum diatur.";
+      })
+      .catch(err => console.warn("Data kontak.json belum ada."));
+
+  </script>
+</body>
+</html>
