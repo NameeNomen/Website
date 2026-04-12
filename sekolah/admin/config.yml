@@ -1,19 +1,10 @@
 backend:
-name: git-gateway
-branch: sekolah
+  name: git-gateway
+  branch: sekolah # Pastiin branch di GitHub lu beneran namanya ini
 media_folder: "sekolah/images/uploads"
 public_folder: "images/uploads"
 collections:
-  - name: "sekolah_data"
-    label: "Data Sekolah"
-    folder: "sekolah/data/berita"
-    create: true
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
-    fields:
-      - {label: "Judul Berita", name: "title", widget: "string"}
-      - {label: "Tanggal", name: "date", widget: "datetime"}
-      - {label: "Foto Utama", name: "image", widget: "image"}
-      - {label: "Isi Berita", name: "body", widget: "markdown"}
+  # 1. PROFIL SEKOLAH (Tetap)
   - name: "profile_sekolah"
     label: "Tentang Sekolah"
     files:
@@ -27,22 +18,48 @@ collections:
           - {label: "Sambutan Kepala Sekolah", name: "greeting", widget: "text"}
           - {label: "Visi", name: "visi", widget: "text"}
           - {label: "Misi", name: "misi", widget: "list", field: {label: "Poin Misi", name: "item", widget: "string"}}
-  - name: "data_guru"
-    label: "Data Guru"
-    folder: "sekolah/data/guru"
-    create: true
-    fields:
-      - {label: "Nama Guru", name: "title", widget: "string"}
-      - {label: "Jabatan/Mapel", name: "job", widget: "string"}
-      - {label: "Foto Guru", name: "image", widget: "image"}
+
+  # 2. KONTAK SEKOLAH (Tetap)
   - name: "kontak_sekolah"
     label: "Kontak dan Alamat"
     files:
-      - label: "informasi kontak"
+      - label: "Informasi Kontak"
         name: "info_utama"
         file: "sekolah/data/kontak.json"
         fields:
           - {label: "Alamat Sekolah", name: "address", widget: "text"}
           - {label: "Nomor Telepon", name: "phone", widget: "string"}
           - {label: "Email Resmi", name: "email", widget: "string"}
-        
+
+  # 3. BERITA SEKOLAH (Udah diganti jadi format File + List)
+  - name: "sekolah_data"
+    label: "Berita & Prestasi"
+    files:
+      - label: "Daftar Berita"
+        name: "list_berita"
+        file: "sekolah/data/list_berita.json"
+        fields:
+          - label: "Kumpulan Berita"
+            name: "items" # Ini kunci utamanya
+            widget: "list"
+            fields:
+              - {label: "Judul Berita", name: "title", widget: "string"}
+              - {label: "Tanggal", name: "date", widget: "datetime"}
+              - {label: "Foto Utama", name: "image", widget: "image"}
+              - {label: "Isi Berita", name: "body", widget: "markdown"}
+
+  # 4. DATA GURU (Udah diganti jadi format File + List)
+  - name: "data_guru"
+    label: "Data Guru"
+    files:
+      - label: "Daftar Guru"
+        name: "list_guru"
+        file: "sekolah/data/list_guru.json"
+        fields:
+          - label: "Kumpulan Guru"
+            name: "items" # Ini kunci utamanya
+            widget: "list"
+            fields:
+              - {label: "Nama Guru", name: "title", widget: "string"}
+              - {label: "Jabatan/Mapel", name: "job", widget: "string"}
+              - {label: "Foto Guru", name: "image", widget: "image"}
