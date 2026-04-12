@@ -40,7 +40,7 @@
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
       transition: background-color 0.3s, color 0.3s;
-      overflow-x: hidden; /* Biar gak goyang pas ada elemen off-screen */
+      overflow-x: hidden; 
     }
 
     a { text-decoration: none; color: inherit; }
@@ -60,19 +60,13 @@
       border-radius: 4px;
       color: transparent !important;
     }
-    .skeleton-img {
-      background-color: var(--surface-alt);
-      border-radius: var(--radius);
-    }
     @keyframes pulse {
       0% { background-position: 200% 0; }
       100% { background-position: -200% 0; }
     }
 
-    /* ANIMASI MUNCUL & HOVER */
-    .fade-in {
-      animation: fadeIn 0.8s ease-out forwards;
-    }
+    /* ANIMASI MUNCUL */
+    .fade-in { animation: fadeIn 0.8s ease-out forwards; }
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: translateY(0); }
@@ -103,287 +97,75 @@
       transition: var(--transition);
     }
 
-    .nav-content {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      height: 70px;
-    }
-
-    .logo {
-      font-size: 1.25rem;
-      font-weight: 800;
-      letter-spacing: -0.05em;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .nav-actions {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 2rem;
-      align-items: center;
-    }
-
-    .nav-links a {
-      font-size: 0.875rem;
-      font-weight: 500;
-      color: var(--text-muted);
-      transition: var(--transition);
-    }
-
+    .nav-content { display: flex; justify-content: space-between; align-items: center; height: 70px; }
+    .logo { font-size: 1.25rem; font-weight: 800; letter-spacing: -0.05em; display: flex; align-items: center; gap: 0.5rem; }
+    .nav-actions { display: flex; align-items: center; gap: 1rem; }
+    .nav-links { display: flex; gap: 2rem; align-items: center; }
+    .nav-links a { font-size: 0.875rem; font-weight: 500; color: var(--text-muted); transition: var(--transition); }
     .nav-links a:hover { color: var(--text); }
-
-    .btn-icon {
-      background: transparent;
-      border: none;
-      color: var(--text-muted);
-      cursor: pointer;
-      padding: 0.5rem;
-      display: flex;
-      align-items: center;
-      border-radius: 8px;
-    }
+    .btn-icon { background: transparent; border: none; color: var(--text-muted); cursor: pointer; padding: 0.5rem; display: flex; align-items: center; border-radius: 8px; }
     .btn-icon:hover { color: var(--text); background-color: var(--surface-alt); }
 
-    /* HAMBURGER MENU */
+    /* HAMBURGER */
     .hamburger {
-      display: none;
-      flex-direction: column;
-      justify-content: space-around;
-      width: 24px;
-      height: 24px;
-      background: transparent;
-      border: none;
-      cursor: pointer;
-      padding: 0;
-      z-index: 110;
+      display: none; flex-direction: column; justify-content: space-around; width: 24px; height: 24px; background: transparent; border: none; cursor: pointer; padding: 0; z-index: 110;
     }
+    .hamburger span { width: 24px; height: 2px; background-color: var(--text); border-radius: 10px; transition: var(--transition); transform-origin: 1px; }
 
-    .hamburger span {
-      width: 24px;
-      height: 2px;
-      background-color: var(--text);
-      border-radius: 10px;
-      transition: var(--transition);
-      transform-origin: 1px;
-    }
-
-    /* HERO SECTION */
+    /* HERO */
     .hero {
-      padding: 120px 0 100px;
-      text-align: center;
-      border-bottom: 1px solid var(--border);
-      background-color: var(--surface-alt);
+      padding: 120px 0 100px; text-align: center; border-bottom: 1px solid var(--border); background-color: var(--surface-alt);
       background-image: linear-gradient(rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1200&q=80');
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
+      background-size: cover; background-position: center; background-attachment: fixed;
     }
-
     body.dark-mode .hero {
       background-image: linear-gradient(rgba(3, 7, 18, 0.95), rgba(3, 7, 18, 0.95)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1200&q=80');
     }
+    .hero h1 { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; line-height: 1.1; letter-spacing: -0.04em; margin-bottom: 1rem; color: var(--text); }
+    .hero p { font-size: 1.125rem; color: var(--text-muted); max-width: 600px; margin: 0 auto; }
 
-    .hero h1 {
-      font-size: clamp(2.5rem, 5vw, 4rem);
-      font-weight: 800;
-      line-height: 1.1;
-      letter-spacing: -0.04em;
-      margin-bottom: 1rem;
-      color: var(--text);
-    }
-
-    .hero p {
-      font-size: 1.125rem;
-      color: var(--text-muted);
-      max-width: 600px;
-      margin: 0 auto;
-    }
-
-    /* SECTION LAYOUTS */
+    /* SECTIONS */
     .section-padding { padding: 5rem 0; }
-    .section-title {
-      font-size: 1.75rem;
-      font-weight: 700;
-      margin-bottom: 2.5rem;
-      letter-spacing: -0.02em;
-    }
+    .section-title { font-size: 1.75rem; font-weight: 700; margin-bottom: 2.5rem; letter-spacing: -0.02em; }
 
-    /* PROFIL & KEPSEK GRID */
-    .grid-profil {
-      display: grid;
-      grid-template-columns: 1fr 2fr;
-      gap: 3rem;
-      align-items: start;
-    }
-
-    .kepsek-foto {
-      width: 100%;
-      aspect-ratio: 3/4;
-      object-fit: cover;
-      border-radius: var(--radius);
-      margin-bottom: 1rem;
-      border: 1px solid var(--border);
-    }
-
+    /* GRIDS */
+    .grid-profil { display: grid; grid-template-columns: 1fr 2fr; gap: 3rem; align-items: start; }
+    .kepsek-foto { width: 100%; aspect-ratio: 3/4; object-fit: cover; border-radius: var(--radius); margin-bottom: 1rem; border: 1px solid var(--border); }
     .kepsek-info h3 { font-size: 1.25rem; margin-bottom: 0.25rem; }
     .kepsek-info p { color: var(--text-muted); font-size: 0.875rem; }
-
-    .sambutan-text {
-      font-size: 1.1rem;
-      line-height: 1.8;
-      color: var(--text);
-    }
-
-    /* VISI MISI GRID */
-    .grid-visimisi {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-
-    .misi-list {
-      list-style-type: decimal;
-      padding-left: 1.5rem;
-      color: var(--text-muted);
-      line-height: 1.7;
-    }
+    .sambutan-text { font-size: 1.1rem; line-height: 1.8; color: var(--text); }
+    .grid-visimisi { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem; }
+    .misi-list { list-style-type: decimal; padding-left: 1.5rem; color: var(--text-muted); line-height: 1.7; }
     .misi-list li { margin-bottom: 0.5rem; }
 
-    /* DUMMY GRID (BUAT GURU & BERITA) */
-    .grid-3 {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-    }
-    .dummy-card {
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      overflow: hidden;
-      background: var(--surface);
-      transition: var(--transition);
-      display: flex;
-      flex-direction: column;
-    }
-    .dummy-card:hover {
-      box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-      transform: translateY(-5px);
-    }
-    .dummy-img {
-      width: 100%;
-      height: 250px;
-      background-color: var(--surface-alt);
-      object-fit: cover;
-    }
-    .dummy-img.berita-img {
-      height: 200px;
-    }
+    /* DYNAMIC GRID (GURU & BERITA) */
+    .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+    .dummy-card { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; background: var(--surface); transition: var(--transition); display: flex; flex-direction: column; }
+    .dummy-card:hover { box-shadow: 0 10px 20px rgba(0,0,0,0.05); transform: translateY(-5px); }
+    .dummy-img { width: 100%; height: 250px; background-color: var(--surface-alt); object-fit: cover; }
+    .dummy-img.berita-img { height: 200px; }
     .dummy-body { padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column; }
-    
-    .badge {
-      font-size: 0.75rem;
-      font-weight: 600;
-      padding: 0.25rem 0.5rem;
-      background: var(--surface-alt);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      display: inline-block;
-      margin-bottom: 0.75rem;
-      align-self: flex-start;
-    }
+    .badge { font-size: 0.75rem; font-weight: 600; padding: 0.25rem 0.5rem; background: var(--surface-alt); border: 1px solid var(--border); border-radius: 4px; display: inline-block; margin-bottom: 0.75rem; align-self: flex-start; }
 
-    /* FOOTER (MERGE DENGAN KONTAK) */
-    footer {
-      background-color: var(--surface-alt);
-      border-top: 1px solid var(--border);
-      padding: 4rem 0 2rem;
-    }
-
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 3rem;
-      margin-bottom: 3rem;
-    }
-
-    .footer-col h4 {
-      font-size: 1.1rem;
-      margin-bottom: 1.5rem;
-      color: var(--text);
-    }
-
-    .footer-col p, .footer-col a {
-      color: var(--text-muted);
-      font-size: 0.9rem;
-      margin-bottom: 0.75rem;
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-
+    /* FOOTER */
+    footer { background-color: var(--surface-alt); border-top: 1px solid var(--border); padding: 4rem 0 2rem; }
+    .footer-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+    .footer-col h4 { font-size: 1.1rem; margin-bottom: 1.5rem; color: var(--text); }
+    .footer-col p, .footer-col a { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.75rem; }
     .footer-col a:hover { color: var(--text); }
+    .footer-bottom { border-top: 1px solid var(--border); padding-top: 2rem; text-align: center; font-size: 0.875rem; color: var(--text-muted); }
 
-    .footer-bottom {
-      border-top: 1px solid var(--border);
-      padding-top: 2rem;
-      text-align: center;
-      font-size: 0.875rem;
-      color: var(--text-muted);
-    }
-
-    /* RESPONSIVE & MOBILE MENU */
+    /* RESPONSIVE */
     @media (max-width: 768px) {
       .hamburger { display: flex; }
-      
-      .nav-links {
-        position: absolute;
-        top: 70px;
-        left: -100%;
-        width: 100%;
-        background-color: var(--bg);
-        flex-direction: column;
-        gap: 0;
-        border-bottom: 1px solid var(--border);
-        transition: left 0.3s ease-in-out;
-      }
-
-      .nav-links.active {
-        left: 0;
-      }
-
-      .nav-links a {
-        padding: 1.25rem 1.5rem;
-        width: 100%;
-        border-bottom: 1px solid var(--surface-alt);
-        display: block;
-      }
-
-      .nav-links a:last-child {
-        border-bottom: none;
-      }
-
-      /* Animasi Hamburger ke 'X' */
-      .hamburger.active span:nth-child(1) {
-        transform: rotate(45deg) translate(5px, 5px);
-      }
-      .hamburger.active span:nth-child(2) {
-        opacity: 0;
-      }
-      .hamburger.active span:nth-child(3) {
-        transform: rotate(-45deg) translate(7px, -6px);
-      }
-
-      .grid-profil { grid-template-columns: 1fr; gap: 2rem; }
-      .grid-visimisi { grid-template-columns: 1fr; }
-      .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .nav-links { position: absolute; top: 70px; left: -100%; width: 100%; background-color: var(--bg); flex-direction: column; gap: 0; border-bottom: 1px solid var(--border); transition: left 0.3s ease-in-out; }
+      .nav-links.active { left: 0; }
+      .nav-links a { padding: 1.25rem 1.5rem; width: 100%; border-bottom: 1px solid var(--surface-alt); display: block; }
+      .nav-links a:last-child { border-bottom: none; }
+      .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+      .hamburger.active span:nth-child(2) { opacity: 0; }
+      .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -6px); }
+      .grid-profil, .grid-visimisi, .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
       .hero { padding: 100px 0 60px; } 
       .card { padding: 1.5rem; } 
     }
@@ -391,7 +173,6 @@
 </head>
 <body>
 
-  <!-- NAVBAR -->
   <header class="navbar">
     <div class="container nav-content">
       <div class="logo">
@@ -402,7 +183,6 @@
       </div>
       
       <div class="nav-actions">
-        <!-- Toggles & Menu Kumpul Disini -->
         <button class="btn-icon" id="mode-toggle" aria-label="Ganti Tema">
           <svg id="moon-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
@@ -429,15 +209,12 @@
         </nav>
 
         <button class="hamburger" id="hamburger-menu" aria-label="Menu">
-          <span></span>
-          <span></span>
-          <span></span>
+          <span></span><span></span><span></span>
         </button>
       </div>
     </div>
   </header>
 
-  <!-- HERO SECTION -->
   <section class="hero">
     <div class="container">
       <h1 id="nama-sekolah" class="skeleton" style="display:inline-block;">Memuat Nama Sekolah...</h1>
@@ -445,164 +222,83 @@
     </div>
   </section>
 
-  <!-- 1. PROFIL SEKOLAH -->
   <section id="profil" class="section-padding fade-in">
     <div class="container">
       <h2 class="section-title">Profil Sekolah</h2>
       
       <div class="grid-profil">
-        <!-- Area Foto & Nama Kepsek -->
         <div class="card" style="text-align: center;">
           <img id="foto-kepsek" src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=400&q=80" alt="Foto Kepala Sekolah" class="kepsek-foto">
           <div class="kepsek-info">
-            <h3 id="nama-kepsek">Bapak Budi Mulyono, M.Pd</h3>
+            <h3 id="nama-kepsek">Memuat Data...</h3>
             <p>Kepala Sekolah</p>
           </div>
         </div>
 
-        <!-- Area Sambutan -->
         <div class="card">
           <h3 style="margin-bottom: 1rem; color: var(--text-muted); font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.05em;">Sambutan Kepala Sekolah</h3>
-          <div id="sambutan" class="sambutan-text">
-            "Pendidikan adalah senjata paling ampuh yang bisa Anda gunakan untuk mengubah dunia. Di sekolah ini, kami tidak hanya mengajarkan teori, tetapi juga karakter dan etika agar siswa siap menghadapi masa depan digital yang penuh tantangan. Selamat bergabung dengan keluarga besar kami."
-          </div>
+          <div id="sambutan" class="sambutan-text">Memuat sambutan...</div>
         </div>
       </div>
 
-      <!-- Visi & Misi -->
       <div class="grid-visimisi">
         <div class="card">
           <h3 style="margin-bottom: 1rem;">Visi</h3>
-          <p id="visi-text" style="color: var(--text-muted); line-height: 1.7;">Menjadi sekolah rujukan nasional yang unggul dalam ilmu pengetahuan, teknologi, dan akhlak mulia.</p>
+          <p id="visi-text" style="color: var(--text-muted); line-height: 1.7;">Memuat visi...</p>
         </div>
         <div class="card">
           <h3 style="margin-bottom: 1rem;">Misi</h3>
           <ul id="misi-list" class="misi-list">
-            <li>Menyelenggarakan pembelajaran berbasis teknologi terkini.</li>
-            <li>Membangun karakter siswa yang berintegritas dan peduli lingkungan.</li>
-            <li>Meningkatkan kompetensi guru secara berkelanjutan.</li>
+            <li>Memuat misi...</li>
           </ul>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 2. GURU / TENAGA PENDIDIK -->
   <section id="guru" class="section-padding fade-in" style="background-color: var(--surface-alt);">
     <div class="container">
       <h2 class="section-title">Tenaga Pendidik</h2>
       <p style="color: var(--text-muted); margin-bottom: 2rem;">Guru-guru profesional yang berdedikasi tinggi membimbing siswa.</p>
       
-      <div class="grid-3">
-        <div class="dummy-card">
-          <img class="dummy-img" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80" alt="Guru">
-          <div class="dummy-body">
-            <h3 style="margin-bottom: 0.25rem;">Ibu Siti Aminah, M.Pd</h3>
-            <p style="color: var(--text-muted); font-size: 0.875rem;">Guru Bahasa Inggris</p>
-          </div>
-        </div>
-        <div class="dummy-card">
-          <img class="dummy-img" src="https://images.unsplash.com/photo-1544717302-de2939b7ef71?auto=format&fit=crop&w=400&q=80" alt="Guru">
-          <div class="dummy-body">
-            <h3 style="margin-bottom: 0.25rem;">Ahmad Dahlan, S.Kom</h3>
-            <p style="color: var(--text-muted); font-size: 0.875rem;">Guru TIK / Komputer</p>
-          </div>
-        </div>
-        <div class="dummy-card">
-          <img class="dummy-img" src="https://images.unsplash.com/photo-1580894732444-8ecded7900cd?auto=format&fit=crop&w=400&q=80" alt="Guru">
-          <div class="dummy-body">
-            <h3 style="margin-bottom: 0.25rem;">Budi Santoso, S.Pd</h3>
-            <p style="color: var(--text-muted); font-size: 0.875rem;">Guru Matematika</p>
-          </div>
-        </div>
+      <div id="guru-grid" class="grid-3">
+        <p style="color: var(--text-muted);">Memuat data guru...</p>
       </div>
     </div>
   </section>
 
-  <!-- 3. BERITA SEKOLAH & PRESTASI -->
   <section id="berita" class="section-padding fade-in">
     <div class="container">
       <h2 class="section-title">Berita & Prestasi</h2>
       <p style="color: var(--text-muted); margin-bottom: 2rem;">Kabar terbaru, kegiatan, dan pencapaian kebanggaan sekolah.</p>
 
-      <div class="grid-3">
-        <!-- Berita 1 -->
-        <div class="dummy-card">
-          <img class="dummy-img berita-img" src="https://images.unsplash.com/photo-1561525140-c2a4cc68e4bd?auto=format&fit=crop&w=600&q=80" alt="Berita">
-          <div class="dummy-body">
-            <span class="badge">Prestasi</span>
-            <h3 style="margin-bottom: 0.5rem; line-height: 1.4;">Juara 1 Olimpiade Sains Nasional Tingkat Provinsi</h3>
-            <p style="color: var(--text-muted); font-size: 0.875rem; margin-bottom: 1rem;">Siswa kami berhasil meraih medali emas pada ajang OSN berkat persiapan matang dan bimbingan guru.</p>
-            <p style="color: var(--text-muted); font-size: 0.75rem; margin-top: auto;">12 Oktober 2024</p>
-          </div>
-        </div>
-
-        <!-- Berita 2 -->
-        <div class="dummy-card">
-          <img class="dummy-img berita-img" src="https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=600&q=80" alt="Berita">
-          <div class="dummy-body">
-            <span class="badge">Kegiatan</span>
-            <h3 style="margin-bottom: 0.5rem; line-height: 1.4;">Kunjungan Edukasi ke Museum Nasional</h3>
-            <p style="color: var(--text-muted); font-size: 0.875rem; margin-bottom: 1rem;">Siswa kelas 6 mengikuti kegiatan field trip untuk mempelajari sejarah kebudayaan Indonesia.</p>
-            <p style="color: var(--text-muted); font-size: 0.75rem; margin-top: auto;">5 Oktober 2024</p>
-          </div>
-        </div>
-
-        <!-- Berita 3 -->
-        <div class="dummy-card">
-          <img class="dummy-img berita-img" src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=600&q=80" alt="Berita">
-          <div class="dummy-body">
-            <span class="badge">Pengumuman</span>
-            <h3 style="margin-bottom: 0.5rem; line-height: 1.4;">Penerimaan Peserta Didik Baru (PPDB) Telah Dibuka</h3>
-            <p style="color: var(--text-muted); font-size: 0.875rem; margin-bottom: 1rem;">Segera daftarkan putra/putri Anda. Kuota terbatas untuk tahun ajaran baru mendatang.</p>
-            <p style="color: var(--text-muted); font-size: 0.75rem; margin-top: auto;">1 Oktober 2024</p>
-          </div>
-        </div>
+      <div id="berita-grid" class="grid-3">
+        <p style="color: var(--text-muted);">Memuat data berita...</p>
       </div>
     </div>
   </section>
 
-  <!-- 4. FOOTER (BERISI KONTAK) -->
   <footer id="footer-kontak">
     <div class="container">
       <div class="footer-grid">
         
-        <!-- Info Brand -->
         <div class="footer-col">
           <h4 id="footer-brand" class="skeleton" style="display:inline-block;">Memuat...</h4>
           <p style="line-height: 1.7;">Sekolah ramah anak dengan fasilitas teknologi terdepan untuk mencetak generasi cerdas beradab.</p>
         </div>
 
-        <!-- Info Kontak dari JSON -->
         <div class="footer-col">
           <h4>Hubungi Kami</h4>
-          <p>
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle>
-            </svg>
-            <span id="alamat-text">Jl. Pendidikan No. 123, Jakarta</span>
-          </p>
-          <p>
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-            </svg>
-            <span id="telepon-text">(021) 555-0198</span>
-          </p>
-          <p>
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline>
-            </svg>
-            <span id="email-text">info@sekolahdigital.sch.id</span>
-          </p>
+          <p><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg> <span id="alamat-text">Memuat alamat...</span></p>
+          <p><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg> <span id="telepon-text">Memuat telepon...</span></p>
+          <p><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg> <span id="email-text">Memuat email...</span></p>
         </div>
 
-        <!-- Tautan Cepat -->
         <div class="footer-col">
           <h4>Tautan Cepat</h4>
           <a href="#profil">Profil Sekolah</a>
           <a href="#guru">Tenaga Pendidik</a>
           <a href="#berita">Berita & Prestasi</a>
-          <a href="#">Portal Siswa</a>
         </div>
 
       </div>
@@ -616,7 +312,7 @@
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // 1. HAMBURGER MENU LOGIC (Buat HP lu yang kecil itu)
+    // HAMBURGER
     const hamburger = document.getElementById('hamburger-menu');
     const navMenu = document.getElementById('nav-menu');
     const navItems = document.querySelectorAll('.nav-item');
@@ -626,7 +322,6 @@
       navMenu.classList.toggle('active');
     });
 
-    // Pas di-klik linknya, tutup menunya (biar pinter dikit UX-nya)
     navItems.forEach(item => {
       item.addEventListener('click', () => {
         hamburger.classList.remove('active');
@@ -634,7 +329,7 @@
       });
     });
 
-    // 2. DARK MODE LOGIC
+    // DARK MODE
     const modeBtn = document.getElementById('mode-toggle');
     const body = document.body;
     const moonIcon = document.getElementById('moon-icon');
@@ -660,42 +355,27 @@
 
     const savedTheme = localStorage.getItem('school-theme');
     const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
-      updateThemeUI(true);
-    } else {
-      updateThemeUI(false);
-    }
+    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) updateThemeUI(true);
+    else updateThemeUI(false);
 
-    // HELPER UNTUK SKELETON
     function removeSkeleton(elementId, text) {
       const el = document.getElementById(elementId);
-      if (el) {
-        el.classList.remove('skeleton');
-        el.innerHTML = text;
-      }
+      if (el) { el.classList.remove('skeleton'); el.innerHTML = text; }
     }
 
-    // --- 3. FETCH DATA TENTANG SEKOLAH (about.json) ---
+    // --- FETCH ABOUT (Sama Kayak Tadi) ---
     fetch('/sekolah/data/about.json')
-      .then(res => {
-        if (!res.ok) throw new Error('about.json tidak ditemukan');
-        return res.json();
-      })
+      .then(res => res.json())
       .then(data => {
         const schoolName = data.school_name || "SD Negeri Digital";
         removeSkeleton('nama-sekolah', schoolName);
-        
         document.getElementById('nav-brand').innerText = schoolName.split(' ')[0] || "Sekolah";
         document.getElementById('nav-brand').classList.remove('skeleton');
-        
         removeSkeleton('footer-brand', schoolName);
         document.getElementById('footer-school').innerText = schoolName;
 
         if(data.Kepsek) document.getElementById('nama-kepsek').innerText = data.Kepsek;
-        
-        const imgEl = document.getElementById('foto-kepsek');
-        if (data.foto_Kepsek) imgEl.src = data.foto_Kepsek; 
-
+        if(data.foto_Kepsek) document.getElementById('foto-kepsek').src = data.foto_Kepsek; 
         if(data.greeting) document.getElementById('sambutan').innerText = data.greeting;
         if(data.visi) document.getElementById('visi-text').innerText = data.visi;
 
@@ -709,27 +389,81 @@
           });
         }
       })
-      .catch(err => {
-        console.log("Mode Dummy jalan karena CMS lokal nggak nembus.");
-        removeSkeleton('nama-sekolah', "SD Negeri Digital");
-        removeSkeleton('footer-brand', "SD Negeri Digital");
-        document.getElementById('nav-brand').innerText = "SDN";
-        document.getElementById('nav-brand').classList.remove('skeleton');
-      });
+      .catch(err => console.warn("about.json gak nemu."));
 
-    // --- 4. FETCH DATA KONTAK (kontak.json) ---
+    // --- FETCH KONTAK ---
     fetch('/sekolah/data/kontak.json')
-      .then(res => {
-        if (!res.ok) throw new Error('kontak.json tidak ditemukan');
-        return res.json();
-      })
+      .then(res => res.json())
       .then(data => {
         if(data.address) document.getElementById('alamat-text').innerText = data.address;
         if(data.phone) document.getElementById('telepon-text').innerText = data.phone;
         if(data.email) document.getElementById('email-text').innerText = data.email;
       })
+      .catch(err => console.warn("kontak.json gak nemu."));
+
+    // --- DYNAMIC DATA: GURU ---
+    // INGAT: Lu wajib punya script buat nge-generate 'list_guru.json' dari folder CMS lu!
+    fetch('/sekolah/data/list_guru.json')
+      .then(res => res.json())
+      .then(data => {
+        const guruGrid = document.getElementById('guru-grid');
+        guruGrid.innerHTML = ''; // Kosongin tulisan "Memuat"
+        
+        if (data && data.length > 0) {
+          data.forEach(guru => {
+            const card = `
+              <div class="dummy-card fade-in">
+                <img class="dummy-img" src="${guru.image || 'https://via.placeholder.400'}" alt="${guru.title}">
+                <div class="dummy-body">
+                  <h3 style="margin-bottom: 0.25rem;">${guru.title}</h3>
+                  <p style="color: var(--text-muted); font-size: 0.875rem;">${guru.job}</p>
+                </div>
+              </div>
+            `;
+            guruGrid.innerHTML += card;
+          });
+        } else {
+          guruGrid.innerHTML = '<p style="color: var(--text-muted);">Belum ada data guru.</p>';
+        }
+      })
       .catch(err => {
-         console.log("Kontak gagal di-fetch, tetep pake dummy.");
+        document.getElementById('guru-grid').innerHTML = '<p style="color: red;">Gagal memuat guru. Pastikan list_guru.json ada!</p>';
+      });
+
+    // --- DYNAMIC DATA: BERITA ---
+    // INGAT: Lu wajib punya script buat nge-generate 'list_berita.json' dari folder CMS lu!
+    fetch('/sekolah/data/list_berita.json')
+      .then(res => res.json())
+      .then(data => {
+        const beritaGrid = document.getElementById('berita-grid');
+        beritaGrid.innerHTML = '';
+        
+        if (data && data.length > 0) {
+          data.forEach(berita => {
+            // Kita potong isinya biar rapi (karena dari CMS biasanya markdown panjang)
+            const snippet = berita.body ? berita.body.substring(0, 80) + '...' : '';
+            // Format tanggal simple
+            const tgl = berita.date ? new Date(berita.date).toLocaleDateString('id-ID', { year: 'numeric', month: 'long', day: 'numeric' }) : '';
+            
+            const card = `
+              <div class="dummy-card fade-in">
+                <img class="dummy-img berita-img" src="${berita.image || 'https://via.placeholder.600'}" alt="${berita.title}">
+                <div class="dummy-body">
+                  <span class="badge">Kabar</span>
+                  <h3 style="margin-bottom: 0.5rem; line-height: 1.4;">${berita.title}</h3>
+                  <p style="color: var(--text-muted); font-size: 0.875rem; margin-bottom: 1rem;">${snippet}</p>
+                  <p style="color: var(--text-muted); font-size: 0.75rem; margin-top: auto;">${tgl}</p>
+                </div>
+              </div>
+            `;
+            beritaGrid.innerHTML += card;
+          });
+        } else {
+          beritaGrid.innerHTML = '<p style="color: var(--text-muted);">Belum ada berita.</p>';
+        }
+      })
+      .catch(err => {
+        document.getElementById('berita-grid').innerHTML = '<p style="color: red;">Gagal memuat berita. Pastikan list_berita.json ada!</p>';
       });
 
   </script>
